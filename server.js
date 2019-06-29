@@ -3,17 +3,20 @@ const app = express()
 const connectDB = require('./config/db')
 const bodyParser = require('body-parser');
 
+const morgan = require('morgan')
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const auth = require('./routes/api/auth');
 
 connectDB()
-
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 app.get('/', (req, res) => res.send('Hello World!'))
 
 //Define routes
+app.use(morgan('dev'))
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
