@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const { ObjectId } = mongoose.Schema
+const {
+  ObjectId
+} = mongoose.Schema
 
 // Create Schema
 const PostShema = new Schema({
@@ -16,13 +18,31 @@ const PostShema = new Schema({
     type: Date,
     default: Date.now
   },
-  photo:{
+  photo: {
     data: Buffer,
     contentType: String
   },
-  author: {
+  postedByUser: {
     type: ObjectId,
     ref: 'users'
+  },
+  likes: {
+    user: {
+      type: ObjectId,
+      ref: 'users'
+    }
+  },
+  comments: {
+    user: {
+      type: ObjectId,
+      ref: 'users'
+    },
+    text: {
+      type: String
+    },
+    name: {
+      type: String
+    }
   }
 });
 

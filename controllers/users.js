@@ -45,7 +45,7 @@ exports.getAllUsers = (req, res) => {
 exports.getUser = (req, res) => {
   return res.json(
     req.profile
-  )
+  ).select(" _id name password") //ToDo impl neded fields
 }
 
 exports.userUpdate = (req, res, next) => {

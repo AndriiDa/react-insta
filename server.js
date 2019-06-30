@@ -3,6 +3,7 @@ const app = express()
 const connectDB = require('./config/db')
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 //ls 29 
 //const expressValidator = require('express-validator')
 
@@ -16,6 +17,7 @@ connectDB()
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser())
+app.use(cors())
 
 //app.use(expressValidator());
 
